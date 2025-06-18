@@ -1,19 +1,21 @@
 
 
-$(document).ready(function(){
-    $(".testimonial .tabs li").click(function(){
-        var i = $(this).index();
-        var targetElement = $(".testimonial .tabs li");
-
-        // Ativa o indicador clicado
-        targetElement.eq(i).addClass('active');
-        targetElement.not(targetElement[i]).removeClass('active');
-
-        // Muda o slide do carrossel
-        $('#carouselExampleIndicators').carousel(i);
+$('.portfolio-menu ul li').click(function(){
+    $('.portfolio-menu ul li').removeClass('active');
+    $(this).addClass('active');
+    
+    var selector = $(this).attr('data-filter');
+    $('.portfolio-item').isotope({
+        filter:selector
     });
-
-    $(".slider .swiper-pagination span").each(function(i){
-        $(this).text(i+1).prepend("0");
-    });
+    return  false;
+});
+$(document).ready(function() {
+var popup_btn = $('.popup-btn');
+popup_btn.magnificPopup({
+type : 'image',
+gallery : {
+    enabled : true
+}
+});
 });
